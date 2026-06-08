@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply | Careers</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #eef2ff;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: #f9fafb;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.15s;
+    }
+    .back-link:hover { background: var(--primary-light); color: var(--primary); }
+
+    /* HEADER BAND */
+    .page-header {
+      background: linear-gradient(135deg, #312e81 0%, #4f46e5 100%);
+      color: #fff;
+      padding: 40px 40px 48px;
+      text-align: center;
+    }
+    .page-header .role-chip {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 5px 16px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .page-header p {
+      font-size: 0.95rem;
+      opacity: 0.78;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 760px;
+      margin: -24px auto 60px;
+      padding: 0 24px;
+    }
+
+    .form-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(79,70,229,0.10);
+      overflow: hidden;
+    }
+
+    .form-card-header {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-card-header h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .form-card-header p {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .tips {
+      display: flex;
+      gap: 12px;
+      padding: 16px 32px;
+      background: #fffbeb;
+      border-bottom: 1px solid #fde68a;
+      flex-wrap: wrap;
+    }
+    .tip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #92400e;
+      font-weight: 500;
+    }
+
+    .form-wrapper {
+      padding: 8px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .form-wrapper iframe {
+      width: 100%;
+      height: 3004px;
+      border: none;
+    }
+
+    /* INFO SIDEBAR moved to below on mobile */
+    .info-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .info-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+    }
+    .info-card h3 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .info-card li {
+      font-size: 0.83rem;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .info-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #059669;
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+      background: #fff;
+    }
+
+    @media (max-width: 600px) {
+      nav  { padding: 0 16px; }
+      .page-header { padding: 32px 20px 40px; }
+      .form-card-header { padding: 20px; }
+      .tips { padding: 14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"></a>
+  <a class="back-link" href="index.html">
+    &#8592; Back to all jobs
+  </a>
+</nav>
+
+<div class="page-header">
+  <div class="role-chip" id="role-chip">Application</div>
+  <h1 id="page-title">Job Application</h1>
+  <p>Complete the form below — we review every submission carefully.</p>
+</div>
+
+<div class="content">
+
+  <div class="form-card">
+    <div class="form-card-header">
+      <h2>Application Form</h2>
+      <p>Fields marked with * are required. We'll respond within 3–5 business days.</p>
+    </div>
+
+    <div class="tips">
+      <span class="tip">&#128161; Keep your resume updated before submitting</span>
+      <span class="tip">&#128204; Double-check your contact details</span>
+      <span class="tip">&#9200; Takes approx. 5 minutes</span>
+    </div>
+
+    <div class="form-wrapper">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScLnNVH8UKcd2H-d6McWi7fQnArmEimkDCAOXuOQAx1cImHMQ/viewform?embedded=true"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Job Application Form"
+        loading="lazy"
+      >Loading…</iframe>
+    </div>
+  </div>
+
+  <div class="info-cards">
+    <div class="info-card">
+      <h3>&#128338; What happens next?</h3>
+      <ul>
+        <li>We review your application within 3–5 business days</li>
+        <li>Shortlisted candidates are contacted via email</li>
+        <li>Initial screening call (30 min) with our HR team</li>
+        <li>Technical interview round with the hiring team</li>
+        <li>Offer rollout for selected candidates</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>&#128222; Need help?</h3>
+      <ul>
+        <li>Contact your HR team for any queries</li>
+        <li>All applications are treated with confidentiality</li>
+        <li>We are an equal-opportunity employer</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2026 All rights reserved.
+</footer>
+
+<script>
+  // Read role from URL query param and display it
+  const params = new URLSearchParams(window.location.search);
+  const role = params.get('role');
+  if (role) {
+    document.getElementById('role-chip').textContent = 'Applying for';
+    document.getElementById('page-title').textContent = decodeURIComponent(role);
+    document.title = 'Apply — ' + decodeURIComponent(role);
+  }
+</script>
+
+</body>
+</html>

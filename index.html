@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | Join Our Team</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #eef2ff;
+      --accent: #06b6d4;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --card-bg: #ffffff;
+      --bg: #f9fafb;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.15s;
+    }
+    .nav-link:hover { background: var(--primary-light); color: var(--primary); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #06b6d4 100%);
+      color: #fff;
+      padding: 80px 40px 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number { font-size: 2rem; font-weight: 800; }
+    .stat-label  { font-size: 0.8rem; opacity: 0.7; font-weight: 400; margin-top: 2px; letter-spacing: 0.5px; }
+
+    /* FILTERS */
+    .filters-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 40px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-label { font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-right: 4px; }
+    .filter-chip {
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+    .filter-chip:hover, .filter-chip.active {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1100px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 28px;
+    }
+    .section-header h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .job-count {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* JOB CARDS GRID */
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+      gap: 20px;
+    }
+
+    .job-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+    }
+    .job-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .job-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 32px rgba(79,70,229,0.12);
+      transform: translateY(-2px);
+    }
+    .job-card:hover::before { opacity: 1; }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .job-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .new-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #059669;
+      background: #d1fae5;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .contract-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #d97706;
+      background: #fef3c7;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .job-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #374151;
+    }
+    .meta-pill.location { background: #eff6ff; color: #1d4ed8; }
+    .meta-pill.exp      { background: #faf5ff; color: #7c3aed; }
+    .meta-pill.type     { background: #f0fdf4; color: #166534; }
+    .meta-pill.openings { background: #fff7ed; color: #c2410c; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+    .req-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 10px; }
+    .req-list  { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px; }
+    .req-list li {
+      font-size: 0.875rem;
+      color: #374151;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .req-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 0.75rem;
+      top: 1px;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .apply-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .apply-btn:hover { background: var(--primary-dark); transform: translateX(2px); }
+    .apply-btn svg { width: 15px; height: 15px; transition: transform 0.2s; }
+    .apply-btn:hover svg { transform: translateX(3px); }
+
+    .view-detail {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* CTA BANNER */
+    .cta-banner {
+      margin-top: 56px;
+      background: linear-gradient(135deg, #312e81, #4f46e5);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      color: #fff;
+    }
+    .cta-banner h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+    .cta-banner p  { opacity: 0.8; margin-bottom: 24px; font-size: 0.95rem; }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 30px;
+      background: #fff;
+      color: var(--primary);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-btn:hover { background: #eef2ff; transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer {
+      margin-top: 72px;
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 32px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer .footer-brand { font-weight: 700; color: var(--primary); font-size: 1rem; }
+    footer p { font-size: 0.85rem; color: var(--muted); }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 56px 24px 64px; }
+      .filters-bar { padding: 14px 20px; }
+      .jobs-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 28px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo"></span>
+  <a href="#open-roles" class="nav-link">Open Roles</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">We're hiring</div>
+  <h1>Build the future<br>with us</h1>
+  <p>We're looking for talented engineers to join our team across India. Come work on exciting products with great people.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-number">36</div>
+      <div class="stat-label">Open Roles</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Cities</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Growth Culture</div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters-bar">
+  <span class="filter-label">Filter by:</span>
+  <button class="filter-chip active" onclick="filterJobs('all', this)">All Roles</button>
+  <button class="filter-chip" onclick="filterJobs('pune', this)">Pune</button>
+  <button class="filter-chip" onclick="filterJobs('mysore', this)">Mysore</button>
+  <button class="filter-chip" onclick="filterJobs('bengaluru', this)">Bengaluru</button>
+  <button class="filter-chip" onclick="filterJobs('chennai', this)">Chennai</button>
+  <button class="filter-chip" onclick="filterJobs('hyderabad', this)">Hyderabad</button>
+  <button class="filter-chip" onclick="filterJobs('mumbai', this)">Mumbai</button>
+  <button class="filter-chip" onclick="filterJobs('embedded', this)">Embedded</button>
+  <button class="filter-chip" onclick="filterJobs('testing', this)">Testing</button>
+  <button class="filter-chip" onclick="filterJobs('management', this)">Management</button>
+</div>
+
+<!-- MAIN -->
+<main id="open-roles">
+  <div class="section-header">
+    <h2>Open Positions</h2>
+    <span class="job-count" id="job-count">36 positions</span>
+  </div>
+
+  <div class="jobs-grid" id="jobs-grid">
+
+    <!-- PUNE: Test Engineer -->
+    <div class="job-card" data-tags="pune testing embedded">
+      <div class="card-top">
+        <div class="job-icon">&#129514;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Test Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Pune (Smartworks-Baner)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>5+ years developing automated test solutions using LabVIEW and NI TestStand</li>
+        <li>5+ years of electronics engineering and hands-on troubleshooting</li>
+        <li>Ability to read electrical schematics and wiring diagrams</li>
+        <li>Integrate instruments and hardware I/O (DMMs, power supplies, DAQ systems)</li>
+        <li>Troubleshoot analog and digital circuits using oscilloscope, DMM, waveform generator</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">LabVIEW · NI TestStand · Electronics</span>
+        <a class="apply-btn" href="apply.html?role=Test+Engineer+%E2%80%94+Pune" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PUNE: Automation Engineer -->
+    <div class="job-card" data-tags="pune testing embedded">
+      <div class="card-top">
+        <div class="job-icon">&#9881;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Automation Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Pune (Smartworks-Baner)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Strong proficiency in Python and pytest framework</li>
+        <li>Hands-on experience with motor control algorithms (BLDC, PMSM, 6-step commutation)</li>
+        <li>Deep knowledge of communication protocols (I2C, UART, SPI, CAN)</li>
+        <li>Hardware expertise with STM, XMC, and similar controllers</li>
+        <li>Experience with Agile methodologies; excellent leadership and communication skills</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Python · pytest · Motor Control · BLDC</span>
+        <a class="apply-btn" href="apply.html?role=Automation+Engineer+%E2%80%94+Pune" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PUNE: Embedded Python Automation Engineer (2 openings) -->
+    <div class="job-card" data-tags="pune embedded testing">
+      <div class="card-top">
+        <div class="job-icon">&#128187;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Embedded Python Automation Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Pune (Smartworks-Baner)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+        <span class="meta-pill openings">2 Openings</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Strong proficiency in Python, pytest, and embedded C/C++</li>
+        <li>Hands-on with motor control (BLDC, PMSM, AC/DC motors) and RTOS</li>
+        <li>Deep knowledge of I2C, UART, SPI, CAN communication protocols</li>
+        <li>Work with oscilloscopes, logic analyzers, and motor test benches</li>
+        <li>Prior experience with MAGTROL is a big plus</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Python · Motor Control · RTOS · CAN</span>
+        <a class="apply-btn" href="apply.html?role=Embedded+Python+Automation+Engineer+%E2%80%94+Pune" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PUNE: Scrum Master -->
+    <div class="job-card" data-tags="pune management">
+      <div class="card-top">
+        <div class="job-icon">&#128203;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Scrum Master</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Pune (Smartworks-Baner)</span>
+        <span class="meta-pill exp">&#127775; 7–10 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Strong knowledge of Agile/Scrum framework and SDLC</li>
+        <li>Hands-on experience as a Scrum Master in Agile projects</li>
+        <li>Proficiency with JIRA, Confluence, Azure DevOps, or equivalent</li>
+        <li>Strong facilitation, communication, and interpersonal skills</li>
+        <li>Experience working with cross-functional engineering teams</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Agile · Scrum · JIRA · Azure DevOps</span>
+        <a class="apply-btn" href="apply.html?role=Scrum+Master+%E2%80%94+Pune" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PUNE: Typhoon HIL Test Engineer -->
+    <div class="job-card" data-tags="pune testing embedded">
+      <div class="card-top">
+        <div class="job-icon">&#128300;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Typhoon HIL Test Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Pune (Captive – Maharashtra)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Mandatory: Typhoon HIL software and system testing understanding</li>
+        <li>Knowledge of CAN J1939, UDS, and Modbus protocol</li>
+        <li>Perform HIL device &amp; system-level testing for automotive ECUs</li>
+        <li>Develop test scripts for automated testing and regression</li>
+        <li>Knowledge of Azure pipelines, Jira, and Confluence</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Typhoon HIL · CAN J1939 · UDS · Automotive</span>
+        <a class="apply-btn" href="apply.html?role=Typhoon+HIL+Test+Engineer+%E2%80%94+Pune" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PUNE: Test Automation Engineer – Mobile/API/UI (Contract) -->
+    <div class="job-card" data-tags="pune testing">
+      <div class="card-top">
+        <div class="job-icon">&#128241;</div>
+        <span class="contract-badge">&#9679; Contract</span>
+      </div>
+      <div class="job-title">Test Automation Engineer (Mobile / API / UI)</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Pune (Smartworks-Baner)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9651; Contract</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Mobile Automation: Appium + Java</li>
+        <li>API Automation: Rest Assured + Java</li>
+        <li>UI Automation: Selenium + Java</li>
+        <li>BDD Framework knowledge; CI/CD experience</li>
+        <li>Maven and GitHub knowledge; Firmware Automation (good to have)</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Appium · Java · REST Assured · Selenium</span>
+        <a class="apply-btn" href="apply.html?role=Test+Automation+Engineer+(Mobile+API+UI)+%E2%80%94+Pune" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PUNE: Test Automation Engineer – Embedded/HIL (Contract, 2 openings) -->
+    <div class="job-card" data-tags="pune testing embedded">
+      <div class="card-top">
+        <div class="job-icon">&#128202;</div>
+        <span class="contract-badge">&#9679; Contract</span>
+      </div>
+      <div class="job-title">Test Automation Engineer (Embedded / HIL)</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Pune (Smartworks-Baner)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9651; Contract</span>
+        <span class="meta-pill openings">2 Openings</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Test automation using Python, Robot Framework, and pytest</li>
+        <li>Knowledge of embedded device software and requirement traceability</li>
+        <li>Tools: Jira, JAMA, GitHub, LabVIEW</li>
+        <li>HIL experience: OpalRT / RT LAB / NI</li>
+        <li>Knowledge of wiring, signal generators, oscilloscope (nice to have)</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Python · Robot Framework · HIL · LabVIEW</span>
+        <a class="apply-btn" href="apply.html?role=Test+Automation+Engineer+(Embedded+HIL)+%E2%80%94+Pune" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PUNE: Test Automation Engineer – Linux Python (Contract) -->
+    <div class="job-card" data-tags="pune testing embedded">
+      <div class="card-top">
+        <div class="job-icon">&#128270;</div>
+        <span class="contract-badge">&#9679; Contract</span>
+      </div>
+      <div class="job-title">Test Automation Engineer (Linux / Python)</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Pune (Smartworks-Baner)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9651; Contract</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Python, pytest, and OOP for test automation development</li>
+        <li>Embedded firmware testing on Linux/RTOS OS platforms</li>
+        <li>Hands-on testing experience with Linux firmware environments</li>
+        <li>JIRA and GitHub knowledge required</li>
+        <li>Strong understanding of firmware testing lifecycle</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Python · pytest · Linux · Firmware · RTOS</span>
+        <a class="apply-btn" href="apply.html?role=Test+Automation+Engineer+(Linux+Python)+%E2%80%94+Pune" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PUNE: Test Automation Engineer – ML QA (Contract) -->
+    <div class="job-card" data-tags="pune testing">
+      <div class="card-top">
+        <div class="job-icon">&#129504;</div>
+        <span class="contract-badge">&#9679; Contract</span>
+      </div>
+      <div class="job-title">Test Automation Engineer (ML / QA)</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Pune (Smartworks-Baner)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9651; Contract</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Develop, train, and optimize ML models for classification and regression tasks</li>
+        <li>Python &amp; Pandas expertise for data manipulation and testing</li>
+        <li>Test automation framework development and test case design</li>
+        <li>Tools: JAMA, JIRA, GitHub</li>
+        <li>Strong understanding of QA processes for ML systems</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Python · Pandas · ML · Test Automation</span>
+        <a class="apply-btn" href="apply.html?role=Test+Automation+Engineer+(ML+QA)+%E2%80%94+Pune" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MYSORE: LabVIEW Engineer (2 openings) -->
+    <div class="job-card" data-tags="mysore testing embedded">
+      <div class="card-top">
+        <div class="job-icon">&#128187;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">LabVIEW Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Mysore (SEZ Unit-I)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+        <span class="meta-pill openings">2 Openings</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Proficient with LabVIEW and TestStand — mandatory</li>
+        <li>Experience with design and development of ATE / Test systems</li>
+        <li>Functional verification using serial, Modbus, Ethernet protocols</li>
+        <li>Hands-on with oscilloscopes, logic analyzers, protocol analyzers</li>
+        <li>5+ years solid automation LabVIEW experience with its toolkits</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">LabVIEW · TestStand · ATE · Modbus</span>
+        <a class="apply-btn" href="apply.html?role=LabVIEW+Engineer+%E2%80%94+Mysore" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- BENGALURU: Automation Test Engineer -->
+    <div class="job-card" data-tags="bengaluru testing embedded">
+      <div class="card-top">
+        <div class="job-icon">&#129514;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Automation Test Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Bengaluru (LTR S1-SEZ Unit 4)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Automated embedded testing using Python and Robot Framework</li>
+        <li>Strong Python programming and pytest skills</li>
+        <li>Test management with Jira, Zephyr Squad, GitHub</li>
+        <li>Knowledge of embedded device software</li>
+        <li>Source control with GitHub; knowledge of wiring/signal generators (nice to have)</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Python · Robot Framework · Pytest · Embedded</span>
+        <a class="apply-btn" href="apply.html?role=Automation+Test+Engineer+%E2%80%94+Bengaluru" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- BENGALURU: SI/PI Engineer (2 openings) -->
+    <div class="job-card" data-tags="bengaluru embedded">
+      <div class="card-top">
+        <div class="job-icon">&#128225;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">SI/PI Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Bengaluru (LTR S1-SEZ Unit 4)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+        <span class="meta-pill openings">2 Openings</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Perform SI and PI simulations for DDR, PCIe, USB, SerDes interfaces</li>
+        <li>Analyze TDR, eye diagrams, crosstalk, insertion/return loss, PDN impedance</li>
+        <li>Work with HyperLynx, Sigrity, Keysight ADS, Ansys SIwave, or equivalent</li>
+        <li>Collaborate with hardware design teams on PCB stack-up and routing</li>
+        <li>Support lab validation and correlation of simulation results</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Signal Integrity · HyperLynx · PCIe · DDR</span>
+        <a class="apply-btn" href="apply.html?role=SI%2FPI+Engineer+%E2%80%94+Bengaluru" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- BENGALURU: Senior Test Automation Engineer -->
+    <div class="job-card" data-tags="bengaluru testing">
+      <div class="card-top">
+        <div class="job-icon">&#128736;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Senior Test Automation Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Bengaluru (LTR S1-SEZ Unit 4)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>5–8 years building and owning Automation Frameworks</li>
+        <li>Develop test strategy and end-to-end testing (cloud and hardware)</li>
+        <li>Familiarity with Java, scripting, and Agile methodology</li>
+        <li>Create and maintain automated test scripts aligned to coding standards</li>
+        <li>Experience testing elevator or industrial domain products (desirable)</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Java · Selenium · Test Strategy · Agile</span>
+        <a class="apply-btn" href="apply.html?role=Senior+Test+Automation+Engineer+%E2%80%94+Bengaluru" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- BENGALURU: LabVIEW Test Automation -->
+    <div class="job-card" data-tags="bengaluru testing embedded">
+      <div class="card-top">
+        <div class="job-icon">&#128202;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">LabVIEW Test Automation Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Bengaluru (Captive – Karnataka)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Edit and enhance existing LabVIEW programs and block diagrams</li>
+        <li>Work with sensor spec sheets to calibrate MFCs, PVs, H sensors, and SVs</li>
+        <li>Expertly tune and correct PID loops for optimal system performance</li>
+        <li>Collaborate with sensor vendors and diagnose/resolve issues</li>
+        <li>Document all work and write comprehensive technical reports</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">LabVIEW · PID Tuning · Sensor Integration</span>
+        <a class="apply-btn" href="apply.html?role=LabVIEW+Test+Automation+Engineer+%E2%80%94+Bengaluru" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- BENGALURU: Firmware Engineer -->
+    <div class="job-card" data-tags="bengaluru embedded">
+      <div class="card-top">
+        <div class="job-icon">&#128268;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Firmware Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Bengaluru (LTR S1-SEZ Unit 4)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Strong hands-on Embedded C for ARM-based microcontroller platforms</li>
+        <li>Solid experience with RTOS (open-source or commercial)</li>
+        <li>Peripheral driver development (Flash, I2C, SPI, UART) and low-level bring-up</li>
+        <li>Working knowledge of TCP/IP socket programming or wireless communication</li>
+        <li>Excellent low-level embedded debugging; mbedTLS experience is a plus</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Embedded C · RTOS · ARM · TCP/IP</span>
+        <a class="apply-btn" href="apply.html?role=Firmware+Engineer+%E2%80%94+Bengaluru" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- BENGALURU: Camera Testing Engineer -->
+    <div class="job-card" data-tags="bengaluru testing">
+      <div class="card-top">
+        <div class="job-icon">&#128247;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Camera Testing Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Bengaluru (Captive – Karnataka)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>End-to-end system/domain knowledge in Access Control, CCTV, Fire, or BMS — MUST</li>
+        <li>Hands-on experience in Selenium / Appium / TestComplete</li>
+        <li>Hands-on with LoadRunner, Neo-load, JMeter for performance testing</li>
+        <li>Experience in Web services, API testing, and mobile automation</li>
+        <li>Python or Java scripting; Docker knowledge required</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Python · Selenium · Appium · CCTV · Docker</span>
+        <a class="apply-btn" href="apply.html?role=Camera+Testing+Engineer+%E2%80%94+Bengaluru" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CHENNAI: Senior PCB Design Engineer -->
+    <div class="job-card" data-tags="chennai embedded">
+      <div class="card-top">
+        <div class="job-icon">&#9889;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Senior PCB Design Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Chennai (DTA)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Proven expertise in Altium Designer and Siemens Xpedition (VX flow)</li>
+        <li>Strong background in high-speed digital and mixed-signal boards; HDI, BGA, dense routing</li>
+        <li>Solid knowledge of SI/PI fundamentals, controlled impedance, return path management</li>
+        <li>Hands-on creating complete fabrication/assembly packages for fabricators/assemblers</li>
+        <li>IPC CID/CID+ certification; rigid-flex experience is a plus</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Altium Designer · Siemens Xpedition · HDI · BGA</span>
+        <a class="apply-btn" href="apply.html?role=Senior+PCB+Design+Engineer+%E2%80%94+Chennai" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CHENNAI: Senior Embedded Engineer (Tech Lead) -->
+    <div class="job-card" data-tags="chennai embedded management">
+      <div class="card-top">
+        <div class="job-icon">&#128161;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Senior Engineer – Embedded (Tech Lead)</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Chennai (Captive – Tamil Nadu)</span>
+        <span class="meta-pill exp">&#127775; 7–10 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>5–7 years embedded software development in C / Embedded C (C++ is a plus)</li>
+        <li>Experience with RTOS or bare-metal systems</li>
+        <li>Hands-on experience with motor drives or pump control systems</li>
+        <li>Microcontrollers: TI, STM32, NXP, or similar</li>
+        <li>Industrial communication protocols: Modbus, CAN, RS485, Ethernet</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Embedded C · RTOS · Motor Control · Modbus</span>
+        <a class="apply-btn" href="apply.html?role=Senior+Engineer+Embedded+Tech+Lead+%E2%80%94+Chennai" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CHENNAI: Automation Test Engineer (2 openings) -->
+    <div class="job-card" data-tags="chennai testing">
+      <div class="card-top">
+        <div class="job-icon">&#129514;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Automation Test Engineer (SDET)</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Chennai (DLF IT Park – SEZ)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+        <span class="meta-pill openings">2 Openings</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Automation testers only — no manual testing profiles</li>
+        <li>Playwright (preferred tool); Selenium is a plus</li>
+        <li>Strong knowledge in performance and security testing</li>
+        <li>Load testing mandatory — experience with LoadRunner</li>
+        <li>Functional, regression, system, and integration testing expertise</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Playwright · Selenium · LoadRunner · Load Testing</span>
+        <a class="apply-btn" href="apply.html?role=Automation+Test+Engineer+SDET+%E2%80%94+Chennai" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CHENNAI: Senior Motor Control Engineer -->
+    <div class="job-card" data-tags="chennai embedded">
+      <div class="card-top">
+        <div class="job-icon">&#9881;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Senior Engineer – Motor Control</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Chennai (Captive – Tamil Nadu)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>5–7 years embedded software in industrial product — mandatory</li>
+        <li>Strong programming in C / Embedded C for motor drives / pump control</li>
+        <li>Motor control fundamentals: induction motors, industrial I/O, sensors</li>
+        <li>Microcontrollers: TI, STM32, NXP, or similar</li>
+        <li>Industrial protocols: Modbus, CAN, RS485, Ethernet</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Embedded C · Motor Control · RTOS · CAN</span>
+        <a class="apply-btn" href="apply.html?role=Senior+Engineer+Motor+Control+%E2%80%94+Chennai" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- HYDERABAD: Senior Engineer – IoT & Firmware -->
+    <div class="job-card" data-tags="hyderabad embedded testing">
+      <div class="card-top">
+        <div class="job-icon">&#127760;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Senior Engineer – IoT &amp; Firmware Testing</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Hyderabad (Purva Summit – STPI)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Strong embedded firmware testing and IoT device testing experience</li>
+        <li>Experience with CAN tools (CANoe, CANalyzer) and protocols (I2C, SPI, CAN, RS232)</li>
+        <li>Cellular protocol testing (2G–5G, LTE, NB-IoT) and RF testing experience</li>
+        <li>Automation using LabVIEW, Python, or similar languages</li>
+        <li>Familiarity with CI/CD pipelines, Jenkins, and Agile techniques</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Firmware Testing · IoT · CAN · RF Testing · LabVIEW</span>
+        <a class="apply-btn" href="apply.html?role=Senior+Engineer+IoT+Firmware+Testing+%E2%80%94+Hyderabad" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- HYDERABAD: Test Automation Engineer (2 openings) -->
+    <div class="job-card" data-tags="hyderabad testing">
+      <div class="card-top">
+        <div class="job-icon">&#128736;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Test Automation Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Hyderabad (Captive – Telangana)</span>
+        <span class="meta-pill exp">&#127775; 5–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+        <span class="meta-pill openings">2 Openings</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>3–5 years in QA; proficiency in Selenium WebDriver with Java or Python</li>
+        <li>API testing with RestAssured / Postman; BDD frameworks (Cucumber)</li>
+        <li>Design scalable automation frameworks; CI/CD integration (Jenkins / Git)</li>
+        <li>Functional, regression, system, and integration testing expertise</li>
+        <li>JIRA or similar for defect logging, tracking, and management</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Selenium · Java · BDD · Cucumber · CI/CD</span>
+        <a class="apply-btn" href="apply.html?role=Test+Automation+Engineer+%E2%80%94+Hyderabad" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- HYDERABAD: Playwright Automation Engineer (4 openings) -->
+    <div class="job-card" data-tags="hyderabad testing">
+      <div class="card-top">
+        <div class="job-icon">&#127918;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Playwright Automation Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Hyderabad (Purva Summit – STPI)</span>
+        <span class="meta-pill exp">&#127775; 4–7 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+        <span class="meta-pill openings">4 Openings</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Proven experience in Playwright and Cypress with JavaScript / TypeScript</li>
+        <li>Develop and maintain robust test automation scripts</li>
+        <li>Strong knowledge of test automation frameworks and best practices</li>
+        <li>Work from office in Hyderabad — immediate joiners preferred</li>
+        <li>Second round must be face-to-face (client round)</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Playwright · Cypress · TypeScript · JavaScript</span>
+        <a class="apply-btn" href="apply.html?role=Playwright+Automation+Engineer+%E2%80%94+Hyderabad" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MUMBAI: Technical Lead / Manager -->
+    <div class="job-card" data-tags="mumbai embedded management">
+      <div class="card-top">
+        <div class="job-icon">&#128084;</div>
+        <span class="new-badge">&#9679; Now Hiring</span>
+      </div>
+      <div class="job-title">Technical Lead / Manager – Embedded Linux</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Mumbai (Rabale – DTA)</span>
+        <span class="meta-pill exp">&#127775; 7–10 Years</span>
+        <span class="meta-pill type">&#9679; Full-Time</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Strong expertise in Embedded C and Embedded Linux; cross-compilation experience</li>
+        <li>Analyze, modify, and debug Linux kernel drivers for custom hardware</li>
+        <li>CAN hardware and software protocol troubleshooting</li>
+        <li>Lead, mentor, and guide team members for quality and timely delivery</li>
+        <li>Git, Bitbucket, and JIRA for version control, code reviews, and task tracking</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">Embedded C · Linux · CAN · Team Leadership</span>
+        <a class="apply-btn" href="apply.html?role=Technical+Lead+Manager+Embedded+Linux+%E2%80%94+Mumbai" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- MUMBAI: Hardware Test Engineer (3 openings, Contract) -->
+    <div class="job-card" data-tags="mumbai embedded testing">
+      <div class="card-top">
+        <div class="job-icon">&#9889;</div>
+        <span class="contract-badge">&#9679; Contract</span>
+      </div>
+      <div class="job-title">Hardware Test Engineer</div>
+      <div class="job-meta">
+        <span class="meta-pill location">&#128205; Mumbai (Airoli – SEZ 4)</span>
+        <span class="meta-pill exp">&#127775; 3–5 Years</span>
+        <span class="meta-pill type">&#9651; Contract</span>
+        <span class="meta-pill openings">3 Openings</span>
+      </div>
+      <hr class="divider" />
+      <p class="req-title">Key Requirements</p>
+      <ul class="req-list">
+        <li>Functional, performance, stress, and reliability testing of electronic hardware</li>
+        <li>Validate PCBs, schematics, and assembled boards against design specifications</li>
+        <li>Operate oscilloscopes, logic analyzers, multimeters, spectrum analyzers</li>
+        <li>Support EMI/EMC, ESD, safety, and regulatory testing</li>
+        <li>B.E. in Electronics, Electrical, Instrumentation, or related engineering</li>
+      </ul>
+      <div class="card-footer">
+        <span class="view-detail">PCB Testing · Oscilloscope · EMI/EMC · Hardware</span>
+        <a class="apply-btn" href="apply.html?role=Hardware+Test+Engineer+%E2%80%94+Mumbai" target="_blank" rel="noopener">
+          Apply Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /jobs-grid -->
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h3>Don't see the right fit?</h3>
+    <p>We're always looking for talented people. Send us a general application and we'll keep you in mind.</p>
+    <a class="cta-btn" href="apply.html?role=General+Application" target="_blank" rel="noopener">
+      Send General Application &#8599;
+    </a>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand"></span>
+  <p>For HR queries, contact your recruitment team.</p>
+  <p>&copy; 2026 All rights reserved.</p>
+</footer>
+
+<script>
+  function filterJobs(tag, el) {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+
+    const cards = document.querySelectorAll('.job-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const tags = card.dataset.tags || '';
+      const show = tag === 'all' || tags.includes(tag);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    document.getElementById('job-count').textContent = visible + ' position' + (visible !== 1 ? 's' : '');
+  }
+</script>
+
+</body>
+</html>
